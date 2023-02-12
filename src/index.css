@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Itim&family=Kaushan+Script&family=Sansita+Swashed:wght@800&display=swap");
+
+@layer {
+    :root {
+        --theme-50: 210 17% 98%;
+        --theme-100: 204 16% 94%;
+        --theme-200: 207 15% 86%;
+        --theme-300: 206 16% 74%;
+        --theme-400: 204 16% 60%;
+        --theme-500: 206 15% 48%;
+        --theme-600: 205 16% 39%;
+        --theme-700: 208 16% 32%;
+        --theme-800: 207 14% 27%;
+        --theme-900: 210 13% 24%;
+
+        --accent-50: 356 100% 97%;
+        --accent-100: 354 100% 94%;
+        --accent-200: 352 100% 90%;
+        --accent-300: 352 100% 81%;
+        --accent-400: 351 100% 71%;
+        --accent-500: 349 100% 65%;
+        --accent-600: 346 87% 50%;
+        --accent-700: 345 92% 41%;
+        --accent-800: 343 90% 35%;
+        --accent-900: 341 85% 30%;
+    }
+
+    .dark {
+        --theme-50: 210 11% 15%;
+        --theme-100: 208 12% 22%;
+        --theme-200: 208 14% 26%;
+        --theme-300: 209 27% 64%;
+        --theme-400: 206 15% 40%;
+        --theme-500: 207 11% 50%;
+        --theme-600: 207 13% 64%;
+        --theme-700: 205 15% 78%;
+        --theme-800: 200 16% 89%;
+        --theme-900: 200 18% 97%;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body,
+#root,
+.app {
+    width: 100%;
+    height: 100vh;
+    @apply bg-theme-100;
+}
