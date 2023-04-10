@@ -34,7 +34,6 @@ export const compile = async (req, response) => {
                         axios
                             .get(`${res.data.result.run_status.output}`)
                             .then((res) => {
-                                console.log(res);
                                 response.status(200).send({ data: res.data });
                             })
                             .catch((error) => {

@@ -3,13 +3,15 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import multer from "multer";
+// import multer from "multer";
 import helmet from "helmet";
 import morgan from "morgan";
 import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import compileRoutes from "./routes/compile.js";
+import fileRoutes from "./routes/file.js";
+import filesRoutes from "./routes/files.js";
 import heRoutes from "./routes/he.js";
 
 // configuration
@@ -32,6 +34,8 @@ app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 app.use("/auth", authRoutes);
 app.use("/compile", compileRoutes);
 app.use("/he", heRoutes);
+app.use("/file", fileRoutes);
+app.use("/files", filesRoutes);
 
 //Mongoose setup
 const PORT = process.env.PORT || 7000;

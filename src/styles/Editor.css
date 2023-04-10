@@ -1,18 +1,18 @@
 .ace-xcode .ace_gutter {
-    @apply bg-theme-900/5;
+    @apply bg-theme-100 dark:bg-theme-800;
 }
 .ace-xcode .ace_print-margin {
-    @apply w-[1px] bg-theme-50;
+    @apply w-[1px] bg-theme-50 dark:bg-theme-900;
 }
 .ace-xcode {
-    @apply text-theme-900 bg-theme-900/5 rounded-lg;
+    @apply text-theme-900 dark:text-theme-50 bg-theme-200 dark:bg-theme-700 rounded-lg;
 }
 .ace-xcode .ace_cursor {
-    @apply text-theme-900;
+    @apply text-theme-900 dark:text-theme-50;
 }
-.ace-xcode .ace_marker-layer .ace_selection {
-    @apply text-theme-900/10;
-}
+/* .ace-xcode .ace_marker-layer .ace_selection {
+    @apply text-theme-900 dark:text-theme-900/10;
+} */
 .ace-xcode.ace_multiselect .ace_selection.ace_start {
     box-shadow: 0 0 3px 0px #ffffff;
 }
