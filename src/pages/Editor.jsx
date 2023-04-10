@@ -44,6 +44,7 @@ const Editor = () => {
   });
 
   const run = async () => {
+    setData({ output: "" });
     try {
       const response = await fetch("http://localhost:8080/compile", {
         method: "POST",
@@ -67,7 +68,7 @@ const Editor = () => {
   const URL = process.env.REACT_APP_SERVER_URL;
 
   const save = async () => {
-    console.log(user.username)
+    console.log(user.username);
     try {
       const response = await fetch(
         `${URL}/file/${user.username}/${editor.openedFile.name}`,

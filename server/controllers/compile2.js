@@ -25,27 +25,50 @@ export const compile = async (req, response) => {
       }
     )
     .then((res) => {
-      setTimeout(() => {
+      let count = 0;
+
+      const get_req_status = setInterval(() => {
         axios
           .post(`${res.data.status_update_url}`, {}, { headers: HEADERS })
           .then((res) => {
-            if (res.data.result.compile_status === "OK") {
+            const req_status = res.data.request_status.code;
+            const compile_status = res.data.result.compile_status;
+
+            if (req_status === "REQUEST_COMPLETED") {
+              console.log("request completed");
               axios
                 .get(`${res.data.result.run_status.output}`)
                 .then((res) => {
-                  response.status(200).send({ data: res.data });
+                  return response.status(200).json({ data: res.data });
                 })
                 .catch((error) => {
-                  response.status(400).send(error);
-                  console.log(error);
+                  return response.status(400);
                 });
-            } else {
-              response
+
+              clearInterval(get_req_status);
+            } else if (
+              req_status === "CODE_COMPILED" &&
+              compile_status === "OK" &&
+              count < 20
+            ) {
+            } else if (req_status === "CODE_COMPILED" && count < 20) {
+              console.log(res.data);
+              console.log("code compiled");
+              return response
                 .status(200)
-                .send({ data: res.data.result.compile_status });
+                .json({ data: res.data.result.compile_status });
             }
-          });
-      }, 200);
-    })
-    .catch((error) => console.log());
+
+            if (count > 20) {
+              console.log("request timeout");
+              clearInterval(get_req_status);
+              return response.status(400).json({ data: "request timeout" });
+            }
+
+            console.log(count);
+            count++;
+          })
+          .catch((error) => console.log(error));
+      }, 1000);
+    });
 };
